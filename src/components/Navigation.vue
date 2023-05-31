@@ -72,10 +72,10 @@ export default {
   left: 0;
   right: 0;
   padding: 7px 0;
-  background-color: #ffff;
   border: 2px solid rgb(33, 31, 31);
   border-radius: 2%;
   margin: 0 auto;
+  background-color: #fff;
   border-top: 1px solid rgb(215, 214, 214);
   width: 500px;
 }
@@ -83,23 +83,19 @@ export default {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: #ffff;
   margin: 0;
 }
 .item {
   width: 33.33%;
   padding: 5px 10px;
   border-radius: 5px;
-  background-color: #ffff;
   text-align: center;
   cursor: pointer;
 }
 .item svg {
-  width: 16px;
+  width: 18px;
   height: auto;
-  background-color: #ffff;
+  fill: rgb(30, 53, 153);
 }
-.item p {
-  background-color: #ffff;
-}
+
 </style>

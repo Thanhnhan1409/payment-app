@@ -26,6 +26,8 @@
             name="Mật khẩu"
           />
           <button class="login">Login</button>
+          <div class="textInSeparator"></div>
+          <button class="sign-up">Sign up</button>
         </div>
       </form>
     </div>
@@ -86,7 +88,7 @@ html {
   z-index: 100;
   position: relative;
   bottom: 0;
-  height: 760px;
+  height: 650px;
   background-color: #fff;
 }
 
@@ -128,6 +130,17 @@ input {
   font-weight: 600;
   margin-top: 40px;
 }
+.sign-up {
+  width: 263px;
+  height: 35px;
+  /* margin-top: 50px; */
+  background: #fff;
+  /* color: #fff; */
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+}
 .box {
   padding: 5px 10px;
 }
@@ -136,5 +149,14 @@ input {
   display: flex;
   justify-content: flex-start;
   color: #ff4433;
+}
+.textInSeparator{
+    border-top: 1px solid #cbd2d6; 
+    position: relative;
+    margin-top: 8.72%;
+    margin-bottom: 4.895%;
+    height: 15px;
+    text-align: center;
+    font-size: 83.34%;
 }
 </style>

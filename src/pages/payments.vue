@@ -80,7 +80,6 @@ export default {
       openPopup,
       isShow,
       isChoose,
-      status, 
     };
   },
 };
