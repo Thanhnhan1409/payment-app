@@ -1,21 +1,17 @@
 <template>
   <div class="container" id="app">
     <router-view></router-view>
-    <Navigation/>
+    <Navigation />
   </div>
-  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-  <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-  <!-- <p>Thanh Nhan</p> -->
 </template>
 
 <script>
 import Navigation from './components/Navigation.vue'
-
 export default {
-  name: 'App',
   components: {
     Navigation
-  }
+  },
+ 
 }
 </script>
 

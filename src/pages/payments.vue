@@ -34,52 +34,54 @@
         </li>
       </ul>
     </div>
-    <PopupConfrim @closePopup="pay()" @action="pay()" v-if="isShow" />
   </div>
 </template>
 
 <script>
-import { useUserStore, usebillStore, useHistoryStore } from "../store";
-import PopupConfrim from "../components/PopupConfrim.vue";
+import { currentUserStore, usebillStore, useHistoryStore } from "../store";
+import { ref } from "vue";
+
 export default {
-  component: {
-    PopupConfrim,
-  },
-  data() {
-    return {
-      isShow: false,
-      isChoose: false,
-    };
-  },
   setup() {
-    const userStore = useUserStore();
+    const currentUserStoreData = currentUserStore();
     const billStore = usebillStore();
     const historyStore = useHistoryStore();
-    // Truy cập vào trạng thái người dùng từ store
-    const user = userStore.user;
+
+    const isShow = ref(false);
+    const isChoose = ref(false);
+
+    // Access the user, bills, and histories from the stores
+    const user = currentUserStoreData.user;
     const bills = billStore.bills;
     const histories = historyStore.histories;
+    
+
+    const pay = (amount, id) => {
+      if (user.balance < amount) {
+        alert("Your balance is not enough");
+      } else {
+        user.balance -= amount;
+        const tmp = bills.find((object) => (object.id = id));
+        histories.push(tmp);
+        bills.splice(bills.findIndex((object) => object.id === id), 1);
+        alert("payment success!");
+      }
+    };
+
+    const openPopup = () => {
+      isShow.value = true;
+    };
+
     return {
       user,
       histories,
       bills,
+      pay,
+      openPopup,
+      isShow,
+      isChoose,
+      status, 
     };
-  },
-  methods: {
-    pay(amount, id) {
-      if (this.user.balance < amount) {
-        alert("Số dư không đủ!");
-      } else {
-        this.user.balance -= amount;
-        const tmp = this.bills.find((object) => (object.id = id));
-        this.histories.push(tmp);
-        this.bills = this.bills.filter((object) => object.id != id);
-        alert("Thanh toán thành công!");
-      }
-    },
-    openPopup() {
-      this.isShow = true;
-    },
   },
 };
 </script>

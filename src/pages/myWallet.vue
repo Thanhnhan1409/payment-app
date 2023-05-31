@@ -18,14 +18,14 @@
 </template>
 
 <script>
-import { useUserStore } from '../store';
+import { currentUserStore } from '../store';
 import Balance from "../components/Balance.vue";
 export default {
   components: {
     Balance,
   },
   setup() {
-    const userStore = useUserStore();
+    const userStore = currentUserStore();
 
     // Truy cập vào trạng thái người dùng từ store
     const user = userStore.user;

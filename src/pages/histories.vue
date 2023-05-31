@@ -16,44 +16,50 @@
         </li>
       </ul>
     </div>
-    <PopupConfrim @closePopup="pay()" @action="pay()" v-if="isShow" />
   </div>
 </template>
 
 <script>
 import { useHistoryStore } from "../store";
-import PopupConfrim from "../components/PopupConfrim.vue";
+import { reactive, ref } from "vue";
+
 export default {
-  component: {
-    PopupConfrim,
-  },
-  data() {
-    return {
-      isShow: false,
-      isChoose: false,
-    };
-  },
   setup() {
     const historyStore = useHistoryStore();
     const histories = historyStore.histories;
-    return {
-        histories
-    };
-  },
-  methods: {
-    pay(amount, id) {
-      if (this.user.balance < amount) {
+
+    const isShow = ref(false);
+    const isChoose = ref(false);
+    const user = reactive({
+      balance: 0, // Initialize with the appropriate value
+    });
+
+    const bills = reactive([]); // Initialize with the appropriate value
+
+    const pay = (amount, id) => {
+      if (user.balance < amount) {
         alert("Số dư không đủ!");
       } else {
-        this.user.balance -= amount;
-        var filteredArray = this.bills.filter((bill) => bill.id !== id);
-        this.bills = filteredArray;
+        user.balance -= amount;
+        const filteredArray = bills.filter((bill) => bill.id !== id);
+        bills.splice(0, bills.length, ...filteredArray);
         alert("Thanh toán thành công!");
       }
-    },
-    openPopup() {
-      this.isShow = true;
-    },
+    };
+
+    const openPopup = () => {
+      isShow.value = true;
+    };
+
+    return {
+      histories,
+      user,
+      bills,
+      pay,
+      openPopup,
+      isShow,
+      isChoose,
+    };
   },
 };
 </script>

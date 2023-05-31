@@ -1,9 +1,9 @@
 import { defineStore } from "pinia";
 
-export const useUserStore = defineStore("user", {
+export const useUserStore = defineStore("users", {
   state: () => ({
-    user:
-      // Danh sách người dùng
+    users:
+    [
       {
         username: "user1",
         password: "password1",
@@ -13,29 +13,50 @@ export const useUserStore = defineStore("user", {
         bank: "Bank A",
         balance: 2000,
       },
+      {
+        "username": "user2",
+        "password": "password2",
+        "fullname": "Jane Smith",
+        "phone": "0987654321",
+        "accountNumber": "987654321",
+        "bank": "Bank B",
+        "balance": 1500
+      },
+      {
+        "username": "user3",
+        "password": "password3",
+        "fullname": "David Johnson",
+        "phone": "5555555555",
+        "accountNumber": "555555555",
+        "bank": "Bank C",
+        "balance": 3000
+      },
+      {
+        "username": "user4",
+        "password": "password4",
+        "fullname": "Emily Davis",
+        "phone": "9876543210",
+        "accountNumber": "123123123",
+        "bank": "Bank D",
+        "balance": 1000
+      },
+      {
+        "username": "user5",
+        "password": "password5",
+        "fullname": "Michael Wilson",
+        "phone": "1112223333",
+        "accountNumber": "999888777",
+        "bank": "Bank E",
+        "balance": 2500
+      }
+    ]
+      
   }),
-
-
-  //   getters: {
-  //     getUserByUsername(username) {
-  //       // Lấy người dùng dựa trên username
-  //       return this.users.find((user) => user.username === username);
-  //     },
-  //     getBalanceByUsername(balance) {
-  //       // Lấy người dùng dựa trên username
-  //       return this.users.find((user) => user.balance === balance);
-  //     },
-  //   },
-
-  //   actions: {
-  //     updateUserBalance(username, newBalance) {
-  //       // Cập nhật số dư của người dùng
-  //       const user = this.getUserByUsername(username);
-  //       if (user) {
-  //         user.balance = newBalance;
-  //       }
-  //     },
-  //   },
+  getters: {
+    getUserByUsername: (state) => (username) => {
+      return state.users.find((user) => user.username === username);
+    },
+  },
 });
 
 
@@ -47,7 +68,7 @@ export const usebillStore = defineStore("bills", {
         nameService: "house money",
         idCode: "1231",
         nameCustomer: "Billie Anna",
-        amount: 1234,
+        amount: 2234,
         content: "no content",
       },
       {
@@ -91,101 +112,16 @@ export const useHistoryStore = defineStore("histories", {
     histories: []
   }),
 });
-// Vue.use(Vuex);
 
-// const storeData = {
-//   state: {
-//     user: [
-//       {
-//         username: "user1",
-//         password: "password1",
-//         fullname: "John Doe",
-//         phone: "1234567890",
-//         accountNumber: "123456789",
-//         bank: "Bank A",
-//         balance: 1000,
-//       },
-//       {
-//         username: "user2",
-//         password: "password2",
-//         fullname: "Jane Smith",
-//         phone: "9876543210",
-//         accountNumber: "987654321",
-//         bank: "Bank B",
-//         balance: 500,
-//       },
-//       {
-//         username: "user3",
-//         password: "password3",
-//         fullname: "David Johnson",
-//         phone: "4567891230",
-//         accountNumber: "456789123",
-//         bank: "Bank C",
-//         balance: 1500,
-//       },
-//       {
-//         username: "user4",
-//         password: "password4",
-//         fullname: "Sarah Williams",
-//         phone: "7891234560",
-//         accountNumber: "789123456",
-//         bank: "Bank A",
-//         balance: 2000,
-//       },
-//       {
-//         username: "user5",
-//         password: "password5",
-//         fullname: "Michael Brown",
-//         phone: "3216549870",
-//         accountNumber: "321654987",
-//         bank: "Bank B",
-//         balance: 800,
-//       },
-//       {
-//         username: "user6",
-//         password: "password6",
-//         fullname: "Emily Davis",
-//         phone: "6549873210",
-//         accountNumber: "654987321",
-//         bank: "Bank C",
-//         balance: 1200,
-//       },
-//       {
-//         username: "user7",
-//         password: "password7",
-//         fullname: "Robert Wilson",
-//         phone: "9873216540",
-//         accountNumber: "987321654",
-//         bank: "Bank A",
-//         balance: 3000,
-//       },
-//       {
-//         username: "user8",
-//         password: "password8",
-//         fullname: "Olivia Taylor",
-//         phone: "3219876540",
-//         accountNumber: "321987654",
-//         bank: "Bank B",
-//         balance: 600,
-//       },
-//       {
-//         username: "user9",
-//         password: "password9",
-//         fullname: "James Anderson",
-//         phone: "6543219870",
-//         accountNumber: "654321987",
-//         bank: "Bank C",
-//         balance: 1400,
-//       },
-//       {
-//         username: "user10",
-//         password: "password10",
-//         fullname: "Sophia Martinez",
-//         phone: "9876541230",
-//         accountNumber: "987654123",
-//         bank: "Bank A",
-//         balance: 2500,
-//       },
-//     ],
-//   },
-// };
+export const currentUserStore = defineStore("user", {
+  state: () => ({
+    user: {
+
+    }
+  }),
+  actions: {
+    setCurrentUser(user) {
+      this.user = user;
+    },
+  },
+});
