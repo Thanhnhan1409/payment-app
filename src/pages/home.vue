@@ -14,7 +14,6 @@ export default {
 
   setup() {
     const userStore = useUserStore();
-
     // Truy cập vào trạng thái người dùng từ store
     const user = userStore.user;
 

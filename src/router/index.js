@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import Home from '../pages/home.vue';
 import MyWallet from '../pages/myWallet.vue';
 import Payments from '../pages/payments.vue'
-
+import History from '../pages/histories.vue'
 
 const routes = [
   {
@@ -16,6 +16,10 @@ const routes = [
   {
     path:"/payments",
     component:Payments
+  },
+  {
+    path:"/histories",
+    component: History
   },
 ];
 

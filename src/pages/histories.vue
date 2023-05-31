@@ -1,36 +1,18 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="container-payments">
-    <h3 class="page-title">Payments</h3>
-    <div class="payment">
-      Balance: $ {{ user.balance }}
-      <div class="payments-options">
-        <button
-          :class="['payments-item', isChoose ? 'isChose' : '']"
-          @click="isChoose = !isChoose"
-        >
-          PayApp
-        </button>
-        <button
-          :class="['payments-item', !isChoose ? 'isChose' : '']"
-          @click="isChoose = !isChoose"
-        >
-          Credit
-        </button>
-      </div>
-    </div>
+    <h3 class="page-title">History</h3>
     <div class="bill-service">
-      <ul class="bill-content" v-for="bill in bills" :key="bill.id">
+      <ul class="bill-content" v-for="history in histories" :key="history.id">
         <li>
           <h3 style="margin-bottom: 20px">Detail transaction</h3>
         </li>
-        <li>Service: {{ bill.nameService }}</li>
-        <li>Id code: {{ bill.idCode }}</li>
-        <li>Name: {{ bill.nameCustomer }}</li>
-        <li>Amount: ${{ bill.amount }}</li>
-        <li>Descript: {{ bill.content }}</li>
+        <li>Service: {{ history.nameService }}</li>
+        <li>Id code: {{ history.idCode }}</li>
+        <li>Name: {{ history.nameCustomer }}</li>
+        <li>Amount: ${{ history.amount }}</li>
+        <li>Descript: {{ history.content }}</li>
         <li>
-          <button class="pay" @click="pay(bill.amount, bill.id)">Pay</button>
         </li>
       </ul>
     </div>
@@ -39,7 +21,7 @@
 </template>
 
 <script>
-import { useUserStore, usebillStore, useHistoryStore } from "../store";
+import { useHistoryStore } from "../store";
 import PopupConfrim from "../components/PopupConfrim.vue";
 export default {
   component: {
@@ -52,17 +34,10 @@ export default {
     };
   },
   setup() {
-    const userStore = useUserStore();
-    const billStore = usebillStore();
     const historyStore = useHistoryStore();
-    // Truy cập vào trạng thái người dùng từ store
-    const user = userStore.user;
-    const bills = billStore.bills;
     const histories = historyStore.histories;
     return {
-      user,
-      histories,
-      bills,
+        histories
     };
   },
   methods: {
@@ -71,9 +46,8 @@ export default {
         alert("Số dư không đủ!");
       } else {
         this.user.balance -= amount;
-        const tmp = this.bills.find((object) => (object.id = id));
-        this.histories.push(tmp);
-        this.bills = this.bills.filter((object) => object.id != id);
+        var filteredArray = this.bills.filter((bill) => bill.id !== id);
+        this.bills = filteredArray;
         alert("Thanh toán thành công!");
       }
     },

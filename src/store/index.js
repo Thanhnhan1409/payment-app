@@ -11,33 +11,86 @@ export const useUserStore = defineStore("user", {
         phone: "1234567890",
         accountNumber: "123456789",
         bank: "Bank A",
-        balance: 1000,
+        balance: 2000,
       },
   }),
 
-//   getters: {
-//     getUserByUsername(username) {
-//       // Lấy người dùng dựa trên username
-//       return this.users.find((user) => user.username === username);
-//     },
-//     getBalanceByUsername(balance) {
-//       // Lấy người dùng dựa trên username
-//       return this.users.find((user) => user.balance === balance);
-//     },
-//   },
 
-//   actions: {
-//     updateUserBalance(username, newBalance) {
-//       // Cập nhật số dư của người dùng
-//       const user = this.getUserByUsername(username);
-//       if (user) {
-//         user.balance = newBalance;
-//       }
-//     },
-//   },
+  //   getters: {
+  //     getUserByUsername(username) {
+  //       // Lấy người dùng dựa trên username
+  //       return this.users.find((user) => user.username === username);
+  //     },
+  //     getBalanceByUsername(balance) {
+  //       // Lấy người dùng dựa trên username
+  //       return this.users.find((user) => user.balance === balance);
+  //     },
+  //   },
+
+  //   actions: {
+  //     updateUserBalance(username, newBalance) {
+  //       // Cập nhật số dư của người dùng
+  //       const user = this.getUserByUsername(username);
+  //       if (user) {
+  //         user.balance = newBalance;
+  //       }
+  //     },
+  //   },
 });
 
 
+export const usebillStore = defineStore("bills", {
+  state: () => ({
+    bills: [
+      {
+        id: 1,
+        nameService: "house money",
+        idCode: "1231",
+        nameCustomer: "Billie Anna",
+        amount: 1234,
+        content: "no content",
+      },
+      {
+        id: 2,
+        nameService: "money",
+        idCode: "1231",
+        nameCustomer: "Billie Anna",
+        amount: 23,
+        content: "no content",
+      },
+      {
+        id: 3,
+        nameService: "house money",
+        idCode: "1231",
+        nameCustomer: "Billie Anna",
+        amount: 23,
+        content: "no content",
+      },
+      {
+        id: 4,
+        nameService: "house money",
+        idCode: "1231",
+        nameCustomer: "Billie Anna",
+        amount: 23,
+        content: "no content",
+      },
+      {
+        id: 5,
+        nameService: "house money",
+        idCode: "1231",
+        nameCustomer: "Billie Anna",
+        amount: 23,
+        content: "no content",
+      },
+    ],
+  }),
+});
+
+export const useHistoryStore = defineStore("histories", {
+  state: () => ({
+    histories: []
+  }),
+});
 // Vue.use(Vuex);
 
 // const storeData = {

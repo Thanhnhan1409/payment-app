@@ -1,5 +1,6 @@
 <template>
   <div class="container-wallet">
+  <h3 class="page-title">My Wallet</h3>
     <div class="information-user">
       <img
         src="https://haycafe.vn/wp-content/uploads/2021/11/hinh-anh-hoat-hinh-de-thuong-cute-dep-nhat-600x600.jpg"
@@ -40,7 +41,7 @@ export default {
 <style scr="../assets/styles/styles.css"></style>
 <style scoped>
 .container-wallet{
-    height: 600px;
+    height: 100%;
     margin: 0;
 }
 .information-user {
@@ -57,7 +58,8 @@ export default {
 }
 .my-qr{
     width: 230px;
-    margin: 23%;
+    margin: 25%;
+    margin-bottom: 0;
 }
 .balance{
     position: absolute;

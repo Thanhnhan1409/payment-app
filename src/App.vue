@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" id="app">
     <router-view></router-view>
     <Navigation/>
   </div>
@@ -27,9 +27,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
-}
-.container{
+  height: 100% !important;
   min-height: 700px;
+  height: 100%;
+  border: 2px solid rgb(33, 31, 31);
+  border-radius: 12px;
 }
 </style>
